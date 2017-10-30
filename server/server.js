@@ -59,7 +59,7 @@ app.get('/getMatchData/:id', function(req, res){
       console.log('error:', err);
       res.sendStatus(500);
     } else {
-      // allMatchData.push(JSON.parse(body));
+      allMatchData.push(JSON.parse(body));
       res.send(body);
     }
   });
@@ -69,7 +69,7 @@ app.get('/getMatchData/:id', function(req, res){
 //   var dataObj = {data: allMatchData};
 //   var content = JSON.stringify(dataObj);
 //
-//   fs.writeFile("testData.json", content, 'utf8', function (err) {
+//   fs.writeFile("gameData.json", content, 'utf8', function (err) {
 //       if (err) {
 //           return console.log(err);
 //       }
