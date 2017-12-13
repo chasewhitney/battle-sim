@@ -3,11 +3,8 @@ body, html {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  /*background-image: url(gamebg.jpg);*/
 }
 
-/*font-family: 'Roboto', sans-serif;*/
-/*font-family: 'Roboto Slab', serif;*/
 h1{
   font-family: 'Roboto', sans-serif;
 }
@@ -31,14 +28,4 @@ h1{
   background-color: #434044;
   width: 100%;
   border-radius: 0px;
-}
-
-.Losses {
-  background-color: red;
-}
-
-path {
-    stroke: #fff;
-    stroke-width: 0.5;
-    cursor: pointer;
 }
