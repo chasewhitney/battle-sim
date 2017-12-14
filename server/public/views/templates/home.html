@@ -5,8 +5,54 @@
 </div>
 
 
-<div class="container">
-  <p>
-    Template Header Paragraph
-  </p>
+<div layout="row">
+  <div flex="50" layout="column" class="inputFields">
+    <div layout="row">
+      <div>
+        <span>LVL:</span>
+        <md-select ng-model="uc.testPlayer.lvl" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="lvlVal in uc.lvlArray" ng-value="lvlVal">{{lvlVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>STR:</span>
+        <md-select ng-model="uc.testPlayer.str" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="strVal in uc.statArray" ng-value="strVal">{{strVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>DEX:</span>
+        <md-select ng-model="uc.testPlayer.dex" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="dexVal in uc.statArray" ng-value="dexVal">{{dexVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>INT:</span>
+        <md-select ng-model="uc.testPlayer.int" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="intVal in uc.statArray" ng-value="intVal">{{intVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>WIS:</span>
+        <md-select ng-model="uc.testPlayer.wis" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="wisVal in uc.statArray" ng-value="wisVal">{{wisVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>CON:</span>
+        <md-select ng-model="uc.testPlayer.con" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="conVal in uc.statArray" ng-value="conVal">{{conVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>HP:</span>
+        <input type="text" placeholder="{{uc.testPlayer.lvl * (10+(uc.testPlayer.con-17)) + 30}}" ng-value="uc.testPlayer.hp">
+
+
+      </div>
+    </div>
+  </div>
+  <div flex="50" layout="column" class="battleText">
+    <button type="button" name="button" ng-click="uc.test()">TEST</button>
+  </div>
 </div>
