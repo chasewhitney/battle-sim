@@ -9,7 +9,7 @@ h1{
   font-family: 'Roboto', sans-serif;
 }
 
-.instructions .container h1 {
+.siteBanner h1 {
   font-size: 84px;
   font-weight: 600;
   text-align:center;
@@ -18,7 +18,7 @@ h1{
   margin-top: 20px;
 }
 
-.instructions {
+.siteBanner {
   background-color: #434044;
   color: #DDDDDD;
   padding: 5px;
@@ -30,8 +30,12 @@ h1{
   border-radius: 0px;
 }
 
-.inputFields {
+.inputPlayer {
   background-color: gray;
+}
+
+.inputEnemy {
+  background-color: tomato;
 }
 
 .battleText {

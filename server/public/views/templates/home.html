@@ -1,12 +1,15 @@
-<div class="instructions">
-    <div class="container">
-        <h1>Template Header</h1>
-    </div>
+<div class="siteBanner">
+  <h1>devTool: Battle Simulator</h1>
+  <button type="button" name="button" ng-click="uc.test()">TEST</button>
+  <button style="float:right" type="button" name="button" ng-click="uc.battle()">SIMULATE ENCOUNTER</button>
 </div>
 
 
 <div layout="row">
-  <div flex="50" layout="column" class="inputFields">
+  <div flex="50" layout="column" class="inputPlayer">
+    <div layout="row" layout-align="center">
+      <h2>PLAYER</h2>
+    </div>
     <div layout="row">
       <div>
         <span>LVL:</span>
@@ -26,7 +29,7 @@
           <md-option ng-repeat="dexVal in uc.statArray" ng-value="dexVal">{{dexVal}}</md-option>
         </md-select>
       </div>
-      <div>
+      <!-- <div>
         <span>INT:</span>
         <md-select ng-model="uc.testPlayer.int" placeholder="empty" class="md-no-underline">
           <md-option ng-repeat="intVal in uc.statArray" ng-value="intVal">{{intVal}}</md-option>
@@ -37,7 +40,7 @@
         <md-select ng-model="uc.testPlayer.wis" placeholder="empty" class="md-no-underline">
           <md-option ng-repeat="wisVal in uc.statArray" ng-value="wisVal">{{wisVal}}</md-option>
         </md-select>
-      </div>
+      </div> -->
       <div>
         <span>CON:</span>
         <md-select ng-model="uc.testPlayer.con" placeholder="empty" class="md-no-underline">
@@ -46,13 +49,62 @@
       </div>
       <div>
         <span>HP:</span>
-        <input type="text" placeholder="{{uc.testPlayer.lvl * (10+(uc.testPlayer.con-17)) + 30}}" ng-value="uc.testPlayer.hp">
+        <input type="number" placeholder="{{uc.hpInputPlaceholder(uc.testPlayer)}}" ng-model="uc.testPlayer.hp">
 
 
       </div>
     </div>
   </div>
-  <div flex="50" layout="column" class="battleText">
-    <button type="button" name="button" ng-click="uc.test()">TEST</button>
+  <div flex="50" layout="column" class="inputEnemy">
+    <div layout="row" layout-align="center">
+      <h2>ENEMY</h2>
+    </div>
+    <div layout="row">
+      <div>
+        <span>LVL:</span>
+        <md-select ng-model="uc.testEnemy.lvl" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="lvlVal in uc.lvlArray" ng-value="lvlVal">{{lvlVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>STR:</span>
+        <md-select ng-model="uc.testEnemy.str" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="strVal in uc.statArray" ng-value="strVal">{{strVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>DEX:</span>
+        <md-select ng-model="uc.testEnemy.dex" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="dexVal in uc.statArray" ng-value="dexVal">{{dexVal}}</md-option>
+        </md-select>
+      </div>
+      <!-- <div>
+        <span>INT:</span>
+        <md-select ng-model="uc.testEnemy.int" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="intVal in uc.statArray" ng-value="intVal">{{intVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>WIS:</span>
+        <md-select ng-model="uc.testEnemy.wis" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="wisVal in uc.statArray" ng-value="wisVal">{{wisVal}}</md-option>
+        </md-select>
+      </div> -->
+      <div>
+        <span>CON:</span>
+        <md-select ng-model="uc.testEnemy.con" placeholder="empty" class="md-no-underline">
+          <md-option ng-repeat="conVal in uc.statArray" ng-value="conVal">{{conVal}}</md-option>
+        </md-select>
+      </div>
+      <div>
+        <span>HP:</span>
+        <input type="text" placeholder="{{uc.hpInputPlaceholder(uc.testEnemy)}}" ng-model="uc.testEnemy.hp">
+
+
+      </div>
+    </div>
   </div>
+</div>
+<div class="battleText" layout="row">
+x
 </div>
