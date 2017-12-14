@@ -9,7 +9,7 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
 
 
   function buildNumberArray(min, max){
-    // builds arrays of numbers for things like stats and levels
+    // Builds arrays of numbers for things like stats and levels
     tempArray = [];
     for (var i = min; i <= max; i++) {
       tempArray.push(i);
@@ -17,8 +17,54 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
     return tempArray;
   }
 
-  vm.battle = function(){
+  function determineOrder(player, enemy){
+    // Determines who acts first
+    playerAction(player, enemy);
+  }
+
+  function playerAction(player, enemy){
+    // Player turn in battle
+    enemy.hp -= 5;
+    console.log('Player hits Enemy for 5 damage!');
+    if(player.hp > 0 && enemy.hp > 0){
+      enemyAction(player, enemy);
+    }
+    else{
+      endBattle(player, enemy);
+    }
+  }
+
+  function enemyAction(player, enemy){
+    // Enemy turn in battle
+    player.hp -= 5;
+    console.log('Enemy hits Player for 5 damage!');
+    if(player.hp > 0 && enemy.hp > 0){
+      playerAction(player, enemy);
+    }
+    else{
+      endBattle(player, enemy);
+    }
+  }
+
+  function endBattle(player, enemy){
+    // Battle conclusion
+    if (player.hp <= 0 && enemy.hp <= 0) {
+      console.log('Both combatants lie on the ground. The fight is a draw!');
+    }
+    else if (player.hp <= 0) {
+      console.log('Enemy wins!');
+    }
+    else {
+      console.log('Player wins!');
+    }
+  }
+
+  vm.battle = function(player, enemy){
     console.log('in battle');
+    vm.battleLog = [];
+    determineOrder(player, enemy);
+
+
   };
 
   vm.hpInputPlaceholder = function(character){
