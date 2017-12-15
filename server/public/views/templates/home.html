@@ -50,11 +50,23 @@
       <div>
         <span>HP:</span>
         <input type="number" placeholder="{{uc.hpInputPlaceholder(uc.testPlayer)}}" ng-model="uc.testPlayer.hp">
-
-
       </div>
     </div>
-  </div>
+    <div class="">
+      <span>AC:</span>
+      <input type="number" placeholder="---" ng-model="uc.testPlayer.ac">
+    </div>
+    <div class="">
+      <md-radio-group layout="row" ng-model="uc.testPlayer.numberOfAttacks">
+        <span>Number of attacks:</span>
+        <md-radio-button value="1" class="md-primary">1</md-radio-button>
+        <md-radio-button value="2" class="md-primary">2</md-radio-button>
+        <md-radio-button value="3" class="md-primary">3</md-radio-button>
+        <md-radio-button value="4" class="md-primary">4</md-radio-button>
+      </md-radio-group>
+    </div>
+  </div> <!-- End Player Column -->
+
   <div flex="50" layout="column" class="inputEnemy">
     <div layout="row" layout-align="center">
       <h2>ENEMY</h2>
@@ -99,12 +111,24 @@
       <div>
         <span>HP:</span>
         <input type="text" placeholder="{{uc.hpInputPlaceholder(uc.testEnemy)}}" ng-model="uc.testEnemy.hp">
-
-
       </div>
     </div>
+    <div class="">
+      <span>AC:</span>
+      <input type="number" placeholder="---" ng-model="uc.testEnemy.ac">
+    </div>
+    <div class="">
+      <md-radio-group layout="row" ng-model="uc.testEnemy.numberOfAttacks">
+        <span>Number of attacks:</span>
+        <md-radio-button value="1" class="md-primary">1</md-radio-button>
+        <md-radio-button value="2" class="md-primary">2</md-radio-button>
+        <md-radio-button value="3" class="md-primary">3</md-radio-button>
+        <md-radio-button value="4" class="md-primary">4</md-radio-button>
+      </md-radio-group>
+    </div>
   </div>
-</div>
+</div> <!-- End enemy column -->
+
 <div class="battleText" layout="row">
 x
 </div>
