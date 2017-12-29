@@ -6,7 +6,10 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
   vm.testEnemy = {name: "Enemy"};
   vm.statArray = buildNumberArray(17,25);
   vm.lvlArray = buildNumberArray(1,50);
+  vm.tempActions = []; /// temp
 
+  tempSkillHeavy = {name: "Heavy Strike", damage: 10, hitMod: -25}; /// temp
+  tempSkillLight = {name: "Quick Strike", damage: 5, hitmod: 0}; /// temp
 
   function buildNumberArray(min, max){
     // Builds arrays of numbers for things like stats and levels
@@ -25,17 +28,36 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
   function rollForHit(attacker, defender){
     // Determines if attacks hits
     for (var i = 0; i < attacker.numberOfAttacks; i++) {
-        var attackRoll = Math.floor(Math.random()*100+1+attacker.lvl+attacker.dex-17);
-        if (attackRoll >= defender.ac * 5) {
-          var damageRoll = Math.floor(Math.random()*8+1) + attacker.lvl/2;
-          defender.hp -= damageRoll;
-          console.log(attacker.name + '\'s attack hits for ' + damageRoll + ' damage!');
+        var attackRoll = Math.floor(Math.random()*100+1); /// temp
+        var battleLogEntry;
+        if (attackRoll >= defender.ac * 5) { /// temp
+          console.log('hit:' + attackRoll + 'vs' + (defender.ac * 5));
+          rollForDamage(attacker, defender);
+          // console.log(attacker.name + '\'s attack hits for ' + damageRoll + ' damage!');
         }
         else {
-          console.log(attacker.name + '\'s attack goes wide!');
+          battleLogEntry = attacker.name + '\'s attack goes wide!';
+          console.log('miss:' + attackRoll + 'vs' + (defender.ac * 5));
+          // console.log(attacker.name + '\'s attack goes wide!');
+          console.log(battleLogEntry);
+          vm.battleLog.push(battleLogEntry);
 
         }
+
     }
+  }
+
+  function rollForDamage(attacker, defender){
+    // Determines damage
+    var battleLogEntry;
+    var numDice = 1; /// temp
+    var diceSides = 8; /// temp
+    var damageRoll = numDice * Math.floor(Math.random()*diceSides+1); /// temp
+    /// possible damage mitigation
+    defender.hp -= damageRoll;
+    battleLogEntry = attacker.name + '\'s attack hits for ' + damageRoll + ' damage!';
+    console.log(battleLogEntry);
+    vm.battleLog.push(battleLogEntry);
   }
 
   function playerAction(player, enemy){
@@ -68,16 +90,31 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
     }
     else if (player.hp <= 0) {
       console.log('Enemy wins!');
+      vm.testEnemy.wins = true;
+      vm.battleLog.push('Enemy wins!');
     }
     else {
       console.log('Player wins!');
+      vm.testPlayer.wins = true;
+      vm.battleLog.push('Player wins!');
     }
+    console.log('battleLog is:', vm.battleLog);
   }
 
   vm.battle = function(player, enemy){
     console.log('in battle');
     // checkStats - make sure everything was entered
     vm.battleLog = [];
+    vm.testPlayer.wins = false;
+    vm.testEnemy.wins = false;
+    if (vm.multiBattle) {
+      player.hp = player.maxHp;
+      enemy.hp = enemy.maxHp;
+    } else {
+      player.maxHp = player.hp;
+      enemy.maxHp = enemy.hp;
+    }
+    vm.multiBattle = true;
     beginBattle(player, enemy);
 
 

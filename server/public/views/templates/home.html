@@ -8,7 +8,7 @@
 <div layout="row">
   <div flex="50" layout="column" class="inputPlayer">
     <div layout-align="center">
-      <h2>PLAYER</h2>
+      <h2>PLAYER<span ng-if="uc.testPlayer.wins == true"> (WINNER)</span></h2>
     </div>
     <div layout="row" flex class="setStats">
       <div>
@@ -74,7 +74,7 @@
 
   <div flex="50" layout="column" class="inputEnemy">
     <div layout="row" layout-align="center">
-      <h2>ENEMY</h2>
+      <h2>ENEMY<span ng-if="uc.testEnemy.wins == true"> (WINNER)</span></h2>
     </div>
     <div layout="row">
       <div>
@@ -134,6 +134,6 @@
   </div>
 </div> <!-- End enemy column -->
 
-<div class="battleText" layout="row">
-x
+<div class="battleText" layout="column">
+<div ng-repeat="event in uc.battleLog track by $index"><p>{{event}}</p></div>
 </div>
