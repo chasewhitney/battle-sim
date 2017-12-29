@@ -7,57 +7,62 @@
 
 <div layout="row">
   <div flex="50" layout="column" class="inputPlayer">
-    <div layout="row" layout-align="center">
+    <div layout-align="center">
       <h2>PLAYER</h2>
     </div>
-    <div layout="row">
+    <div layout="row" flex class="setStats">
       <div>
         <span>LVL:</span>
-        <md-select ng-model="uc.testPlayer.lvl" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testPlayer.lvl" ng-init="uc.testPlayer.lvl=1" class="md-no-underline">
           <md-option ng-repeat="lvlVal in uc.lvlArray" ng-value="lvlVal">{{lvlVal}}</md-option>
         </md-select>
       </div>
       <div>
         <span>STR:</span>
-        <md-select ng-model="uc.testPlayer.str" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testPlayer.str" ng-init="uc.testPlayer.str=20" class="md-no-underline">
           <md-option ng-repeat="strVal in uc.statArray" ng-value="strVal">{{strVal}}</md-option>
         </md-select>
       </div>
       <div>
         <span>DEX:</span>
-        <md-select ng-model="uc.testPlayer.dex" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testPlayer.dex" ng-init="uc.testPlayer.dex=20" class="md-no-underline">
           <md-option ng-repeat="dexVal in uc.statArray" ng-value="dexVal">{{dexVal}}</md-option>
         </md-select>
       </div>
       <!-- <div>
         <span>INT:</span>
-        <md-select ng-model="uc.testPlayer.int" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testPlayer.int" ng-init="uc.testPlayer.int=20" class="md-no-underline">
           <md-option ng-repeat="intVal in uc.statArray" ng-value="intVal">{{intVal}}</md-option>
         </md-select>
       </div>
       <div>
         <span>WIS:</span>
-        <md-select ng-model="uc.testPlayer.wis" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testPlayer.wis" ng-init="uc.testPlayer.wis=20" class="md-no-underline">
           <md-option ng-repeat="wisVal in uc.statArray" ng-value="wisVal">{{wisVal}}</md-option>
         </md-select>
       </div> -->
       <div>
         <span>CON:</span>
-        <md-select ng-model="uc.testPlayer.con" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testPlayer.con" ng-init="uc.testPlayer.con=20" class="md-no-underline">
           <md-option ng-repeat="conVal in uc.statArray" ng-value="conVal">{{conVal}}</md-option>
         </md-select>
       </div>
-      <div>
-        <span>HP:</span>
-        <input type="number" placeholder="{{uc.hpInputPlaceholder(uc.testPlayer)}}" ng-model="uc.testPlayer.hp">
+      <div layout="column">
+        <div class="">
+          <span>HP:</span>
+          <input type="number" ng-model="uc.testPlayer.hp" ng-init="uc.testPlayer.hp=40">
+        </div>
+        <div class="">
+          <span>AC:</span>
+          <input type="number" ng-model="uc.testPlayer.ac" ng-init="uc.testPlayer.ac=5">
+        </div>
       </div>
-    </div>
-    <div class="">
-      <span>AC:</span>
-      <input type="number" placeholder="---" ng-model="uc.testPlayer.ac">
-    </div>
-    <div class="">
-      <md-radio-group layout="row" ng-model="uc.testPlayer.numberOfAttacks">
+
+    </div> <!-- end stats row -->
+
+
+    <div class="setAttacks">
+      <md-radio-group layout="row" ng-model="uc.testPlayer.numberOfAttacks" ng-init="uc.testPlayer.numberOfAttacks=1">
         <span>Number of attacks:</span>
         <md-radio-button value="1" class="md-primary">1</md-radio-button>
         <md-radio-button value="2" class="md-primary">2</md-radio-button>
@@ -74,51 +79,51 @@
     <div layout="row">
       <div>
         <span>LVL:</span>
-        <md-select ng-model="uc.testEnemy.lvl" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testEnemy.lvl" ng-init="uc.testEnemy.lvl=1" class="md-no-underline">
           <md-option ng-repeat="lvlVal in uc.lvlArray" ng-value="lvlVal">{{lvlVal}}</md-option>
         </md-select>
       </div>
       <div>
         <span>STR:</span>
-        <md-select ng-model="uc.testEnemy.str" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testEnemy.str" ng-init="uc.testEnemy.str=20" class="md-no-underline">
           <md-option ng-repeat="strVal in uc.statArray" ng-value="strVal">{{strVal}}</md-option>
         </md-select>
       </div>
       <div>
         <span>DEX:</span>
-        <md-select ng-model="uc.testEnemy.dex" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testEnemy.dex" ng-init="uc.testEnemy.dex=20" class="md-no-underline">
           <md-option ng-repeat="dexVal in uc.statArray" ng-value="dexVal">{{dexVal}}</md-option>
         </md-select>
       </div>
       <!-- <div>
         <span>INT:</span>
-        <md-select ng-model="uc.testEnemy.int" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testEnemy.int" ng-init="uc.testEnemy.int=20" class="md-no-underline">
           <md-option ng-repeat="intVal in uc.statArray" ng-value="intVal">{{intVal}}</md-option>
         </md-select>
       </div>
       <div>
         <span>WIS:</span>
-        <md-select ng-model="uc.testEnemy.wis" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testEnemy.wis" ng-init="uc.testEnemy.wis=20" class="md-no-underline">
           <md-option ng-repeat="wisVal in uc.statArray" ng-value="wisVal">{{wisVal}}</md-option>
         </md-select>
       </div> -->
       <div>
         <span>CON:</span>
-        <md-select ng-model="uc.testEnemy.con" placeholder="empty" class="md-no-underline">
+        <md-select ng-model="uc.testEnemy.con" ng-init="uc.testEnemy.con=20" class="md-no-underline">
           <md-option ng-repeat="conVal in uc.statArray" ng-value="conVal">{{conVal}}</md-option>
         </md-select>
       </div>
       <div>
         <span>HP:</span>
-        <input type="text" placeholder="{{uc.hpInputPlaceholder(uc.testEnemy)}}" ng-model="uc.testEnemy.hp">
+        <input type="text" ng-model="uc.testEnemy.hp" ng-init="uc.testEnemy.hp=40">
       </div>
     </div>
     <div class="">
       <span>AC:</span>
-      <input type="number" placeholder="---" ng-model="uc.testEnemy.ac">
+      <input type="number" ng-model="uc.testEnemy.ac" ng-init="uc.testEnemy.ac=5">
     </div>
     <div class="">
-      <md-radio-group layout="row" ng-model="uc.testEnemy.numberOfAttacks">
+      <md-radio-group layout="row" ng-model="uc.testEnemy.numberOfAttacks" ng-init="uc.testEnemy.numberOfAttacks=1">
         <span>Number of attacks:</span>
         <md-radio-button value="1" class="md-primary">1</md-radio-button>
         <md-radio-button value="2" class="md-primary">2</md-radio-button>

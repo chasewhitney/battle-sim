@@ -41,3 +41,49 @@ h1{
 .battleText {
   background-color: yellow;
 }
+
+.setStats {
+  background-color: blue;
+  margin-left:auto;
+  margin-right:auto;
+  border-top: 1px black solid;
+}
+
+.setStats div{
+  background-color: green;
+  padding:5px;
+  margin:5px;
+  text-align: center;
+  font-size: 18px;
+  margin-top:auto;
+  margin-bottom:auto;
+}
+
+.setStats md-select {
+  /*display: inline-block;*/
+  border: 1px black solid;
+  margin:5px;
+}
+
+.setStats input {
+  max-width: 60px;
+}
+
+.setAttacks {
+  background-color: green;
+  padding:10px;
+  margin:10px;
+  text-align: center;
+  font-size: 18px;
+  margin-top:auto;
+  margin-bottom:auto;
+}
+
+.setAttacks span{
+  margin-right: 20px;
+}
+
+.setAttacks md-radio-button{
+  margin-top:auto;
+  margin-bottom:auto;
+}
