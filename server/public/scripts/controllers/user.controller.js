@@ -1,4 +1,4 @@
-myApp.controller('UserController', function(UserService, $http, $location, $mdDialog) {
+myApp.controller('UserController', function(UserService, $http, $location, $mdDialog, $timeout) {
   console.log('UserController created');
   var vm = this;
   vm.userService = UserService;
@@ -36,7 +36,7 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
           // console.log(attacker.name + '\'s attack hits for ' + damageRoll + ' damage!');
         }
         else {
-          battleLogEntry = attacker.name + '\'s attack goes wide!';
+          battleLogEntry = attacker.name + '\'s attack misses.';
           console.log('miss:' + attackRoll + 'vs' + (defender.ac * 5));
           // console.log(attacker.name + '\'s attack goes wide!');
           console.log(battleLogEntry);
@@ -55,7 +55,7 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
     var damageRoll = numDice * Math.floor(Math.random()*diceSides+1); /// temp
     /// possible damage mitigation
     defender.hp -= damageRoll;
-    battleLogEntry = attacker.name + '\'s attack hits for ' + damageRoll + ' damage!';
+    battleLogEntry = attacker.name + '\'s attack hits for ' + damageRoll + ' damage.';
     console.log(battleLogEntry);
     vm.battleLog.push(battleLogEntry);
   }
@@ -74,29 +74,34 @@ myApp.controller('UserController', function(UserService, $http, $location, $mdDi
   function enemyAction(player, enemy){
     // Enemy turn in battle
     rollForHit(enemy, player);
-
-    if(player.hp > 0 && enemy.hp > 0){
-      playerAction(player, enemy);
-    }
-    else{
-      endBattle(player, enemy);
-    }
+$timeout(function(){if(player.hp > 0 && enemy.hp > 0){
+  playerAction(player, enemy);
+}
+else{
+  endBattle(player, enemy);
+}},1000);
+    // if(player.hp > 0 && enemy.hp > 0){
+    //   playerAction(player, enemy);
+    // }
+    // else{
+    //   endBattle(player, enemy);
+    // }
   }
 
   function endBattle(player, enemy){
     // Battle conclusion
     if (player.hp <= 0 && enemy.hp <= 0) {
-      console.log('Both combatants lie on the ground. The fight is a draw!');
+      console.log('The fight is a draw.');
     }
     else if (player.hp <= 0) {
-      console.log('Enemy wins!');
+      console.log('Enemy wins.');
       vm.testEnemy.wins = true;
-      vm.battleLog.push('Enemy wins!');
+      vm.battleLog.push('Enemy wins.');
     }
     else {
-      console.log('Player wins!');
+      console.log('Player wins.');
       vm.testPlayer.wins = true;
-      vm.battleLog.push('Player wins!');
+      vm.battleLog.push('Player wins.');
     }
     console.log('battleLog is:', vm.battleLog);
   }

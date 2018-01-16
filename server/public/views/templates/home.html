@@ -7,9 +7,9 @@
 
 <div layout="row">
   <div flex="50" layout="column" class="inputPlayer">
-    <div layout-align="center">
+
       <h2>PLAYER<span ng-if="uc.testPlayer.wins == true"> (WINNER)</span></h2>
-    </div>
+
     <div layout="row" flex class="setStats">
       <div>
         <span>LVL:</span>
@@ -73,10 +73,10 @@
   </div> <!-- End Player Column -->
 
   <div flex="50" layout="column" class="inputEnemy">
-    <div layout="row" layout-align="center">
+
       <h2>ENEMY<span ng-if="uc.testEnemy.wins == true"> (WINNER)</span></h2>
-    </div>
-    <div layout="row">
+
+    <div layout="row" flex class="setStats">
       <div>
         <span>LVL:</span>
         <md-select ng-model="uc.testEnemy.lvl" ng-init="uc.testEnemy.lvl=1" class="md-no-underline">
@@ -113,16 +113,19 @@
           <md-option ng-repeat="conVal in uc.statArray" ng-value="conVal">{{conVal}}</md-option>
         </md-select>
       </div>
-      <div>
-        <span>HP:</span>
-        <input type="text" ng-model="uc.testEnemy.hp" ng-init="uc.testEnemy.hp=40">
+      <div layout="column">
+        <div class="">
+          <span>HP:</span>
+          <input type="number" ng-model="uc.testEnemy.hp" ng-init="uc.testEnemy.hp=40">
+        </div>
+        <div class="">
+          <span>AC:</span>
+          <input type="number" ng-model="uc.testEnemy.ac" ng-init="uc.testEnemy.ac=5">
+        </div>
       </div>
     </div>
-    <div class="">
-      <span>AC:</span>
-      <input type="number" ng-model="uc.testEnemy.ac" ng-init="uc.testEnemy.ac=5">
-    </div>
-    <div class="">
+
+    <div class="setAttacks">
       <md-radio-group layout="row" ng-model="uc.testEnemy.numberOfAttacks" ng-init="uc.testEnemy.numberOfAttacks=1">
         <span>Number of attacks:</span>
         <md-radio-button value="1" class="md-primary">1</md-radio-button>
